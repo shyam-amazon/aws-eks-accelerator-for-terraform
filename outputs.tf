@@ -26,9 +26,14 @@ output "oidc_provider_arn" {
   value       = var.create_eks ? module.aws_eks.oidc_provider_arn : "EKS Cluster not enabled"
 }
 
+output "cluster_id" {
+  description = "Kubernetes Cluster Id"
+  value       = var.create_eks ? module.aws_eks.cluster_id : "EKS Cluster not enabled"
+}
+
 output "cluster_name" {
   description = "Kubernetes Cluster Name"
-  value       = var.create_eks ? module.aws_eks.cluster_id : "EKS Cluster not enabled"
+  value       = var.create_eks ? module.eks_tags.id : "EKS Cluster not enabled"
 }
 
 output "configure_kubectl" {
